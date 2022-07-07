@@ -1,13 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import GlobalStyles from "./GlobalStyles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BetweenStations from "./components/BetweenStation";
+import LiveStatus from "./components/LiveStatus";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home";
+import store from "./store";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <NavBar />
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="LiveStatus" element={<LiveStatus />} />
+          <Route path="BetweenStations" element={<BetweenStations />} />
+        </Routes>
+      </Provider>
+      <GlobalStyles />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
