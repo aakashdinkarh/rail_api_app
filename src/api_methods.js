@@ -4,7 +4,7 @@ const failed = {
   status: false,
   message: "Sorry, could not complete request",
 };
-
+const api_key = process.env.REACT_APP_API_KEY;
 (async () => {
   fetch("stations.json", {
     headers: {
@@ -43,7 +43,7 @@ export const fetchTrains = async (source, destination) => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "066d66199bmsh8f5b5c92496d27dp14665bjsn5cdb2b85ee7f",
+      "X-RapidAPI-Key": api_key,
       "X-RapidAPI-Host": "irctc1.p.rapidapi.com",
     },
   };
@@ -63,7 +63,7 @@ export const fetchLiveStatus = async (number, day_ago = 0) => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "066d66199bmsh8f5b5c92496d27dp14665bjsn5cdb2b85ee7f",
+      "X-RapidAPI-Key": api_key,
       "X-RapidAPI-Host": "irctc1.p.rapidapi.com",
     },
   };
